@@ -18,6 +18,23 @@ table.schedule td {
     border-collapse: collapse;
 }
 
+div.navbar {
+
+    background-color: rgb(168, 246, 252); 
+    position: fixed; 
+    width: 100%;
+    padding: 0px 22px 0px 22px;
+
+}
+
+ul.navlist li {
+
+    display:inline-block;
+    padding-inline: 5px;
+    text-align: center;
+
+}
+
 h1 {
     color: navy;
     margin-left: 20px;
