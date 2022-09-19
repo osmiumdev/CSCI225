@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>CSCI225 Homepage of Matt Jones.</title>
+        <link rel="stylesheet" href="css/css.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+
+        <div class="navbar">
+
+            <ul class="navlist">
+
+                <li><a href="https://osmium.dev/index.html">OsmiumDev's Homepage</a></li>
+                <li><a href="https://www.usca.edu/">USCA Homepage</a></li>
+                <li><a href="https://www.youtube.com/watch?v=xvFZjo5PgG0">Other Links</a></li>
+
+            </ul>
+
+        </div>
+
+        <div class="navbar_spacer">
+
+          <br>
+          <br>
+
+        </div>
+
+        <div class="video">
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/1hvPTqswJn4" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <div class="form">
+
+            <form name="feedback">
+
+                <!-- 3 HTML5 Form elements added: Pattern to Name (No numbers allowed), Autoselect ratio button to Yes, Turn on Autocomplete for Email.-->
+
+                <fieldset>
+
+					<p>* First Name (No Numbers):<input type="text" name="fname" placeholder="anonymous" required pattern="^[^0-9]+$"></p>
+                    <p>* Last Name (No Numbers):<input type="text" name="lname" placeholder="anonymous" required pattern="^[^0-9]+$"></p>
+	
+                    <p>(Required) Email<input type="email" name="mail" placeholder="name@domain.com" autocomplete="on"></p>
+					
+                    <p>* Will you recommend this site?: Yes <input type="radio" name="recommended" value="true" checked> No <input type="radio" name="recommended" value="false"></p>
+
+                    <p>Favorite website:
+						<select size="1" name="favsite" id="favsite">
+							<option value="google">Google</option>
+							<option value="facebook">Facebook</option>
+							<option value="twitter">Twitter</option>
+							<option value="myspace">MySpace</option>
+						</select>
+                    </p>
+                    
+                    <p>Rate my website on a scale from 1 to 10: <input type="range" id="rating" name="rating" min="1" max="10" value="10"></p>
+
+                    <p>Additional comments: <br><textarea id="comment" name="comment" rows="5" cols="50"></textarea></p>
+
+                    <input type="submit" value="Submit">
+
+                </fieldset>
+
+            </form>
+
+        </div>
+
+        <footer>
+
+            <p>Copyright 2022 | <b>Matt Jones</b></p>
+
+        </footer>
+        
+    </body>
+
+</html>
