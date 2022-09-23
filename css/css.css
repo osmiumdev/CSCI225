@@ -1,3 +1,12 @@
+/* Remove default margin and padding for body. */
+/* This removes whitespace at the edges of the navbar. */
+html, body{
+
+    margin: 0px;
+    padding: 0px;
+
+}
+
 table.schedule { 
     width: 100%;
     table-layout: fixed; 
@@ -18,15 +27,6 @@ table.schedule td {
     border-collapse: collapse;
 }
 
-div.navbar {
-
-    background-color: rgb(168, 246, 252); 
-    position: fixed; 
-    width: 100%;
-    padding: 0px 22px 0px 22px;
-
-}
-
 ul.navlist li {
 
     display:inline-block;
@@ -38,4 +38,22 @@ ul.navlist li {
 h1 {
     color: navy;
     margin-left: 20px;
+}
+
+a {
+
+
+
+}
+
+/* Fonts */
+
+@font-face {
+    font-family: 'Changa';
+    src: url('../fonts/Changa-Medium.ttf') format("truetype");
+
+}
+@font-face {
+    font-family: 'Inter';
+    src: url('../fonts/Inter-Variable.ttf') format("truetype");
 }

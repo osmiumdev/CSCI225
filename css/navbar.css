@@ -1,0 +1,79 @@
+/* Navbar fixed object, contains CSS for background tinted color, */
+/* forces scrolling through links, and removes scrollbar. */
+nav {
+    background-color: #eee;
+    overflow: hidden;
+    scroll-behavior: smooth;
+
+    margin-left: 0px;
+    position: fixed;
+    top: 0;
+}
+/* The div for the navbar holds all "sections" */
+nav .container {
+    height: calc(3em + 4px);
+}
+/* This fixes empty space above navbar in first page load. */
+/* Cause is probably due to the large font used in the logo. */
+nav .container #main{
+    line-height: 16px;
+}
+/* Each section holds a different list of links. */
+nav .container section {
+    padding: calc(1em + 2px);
+    width: 100vw;
+}
+/* Modify links in the sections. */
+nav .container section a {
+
+    border: solid 1px transparent;
+    padding: 1em;
+    color: rgb(0, 110, 255);
+
+}
+/* Remove border around link clicks */
+nav .container section a:active, nav .container section a:focus{
+
+    outline: 0;
+
+}
+/* Change links when hovering over them */
+nav .container section a:hover{
+
+    text-decoration: underline;
+
+}
+/* Remove visited link discoloration */
+nav .container section a:visited{
+
+    color: rgb(0, 110, 255);
+
+}
+
+/* Navbar Logo Font & Color and Link Font & Color */
+
+nav a {
+
+    font-family: Inter, 'Times New Roman', Times, serif;
+    text-decoration: none;
+
+}
+
+nav a#logo {
+
+    font-family: Changa, 'Times New Roman', Times, serif;
+    font-size: x-large;
+
+}
+
+nav a#logo logo1{
+
+    color: rgb(0, 140, 255);
+
+}
+
+nav a#logo logo2{
+
+    color: rgb(0, 81, 255);
+
+}
