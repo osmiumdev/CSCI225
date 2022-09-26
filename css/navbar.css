@@ -1,79 +1,108 @@
-/* Navbar fixed object, contains CSS for background tinted color, */
-/* forces scrolling through links, and removes scrollbar. */
+/* Navbar object sticks to top of page, and holds links. */
+/* All CSS in here is only for navbar modification. */
+
+/* Navbar object specified background color, disables */
+/* div scrolling, and sticks to top of the page. */
 nav {
-    background-color: #eee;
+
+    /* Background of navbar is a gradient, from off-white to pure transparency, conversion starting halfway through.*/
+    background-image: linear-gradient(to right, rgba(238, 238, 238, 1), rgba(238, 238, 238, 1), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+    position: fixed;
     overflow: hidden;
     scroll-behavior: smooth;
 
-    margin-left: 0px;
-    position: fixed;
-    top: 0;
 }
-/* The div for the navbar holds all "sections" */
-nav .container {
+
+/* The div for the navbar holds all "section" objects */
+/* We specify the height of the divs to be a size relative */
+/* to the current font. (1em = 1x current font size) */
+/* Line height is specified to fix bug on first page load. */
+nav .nav-div {
+
     height: calc(3em + 4px);
-}
-/* This fixes empty space above navbar in first page load. */
-/* Cause is probably due to the large font used in the logo. */
-nav .container #main{
     line-height: 16px;
+
 }
+
 /* Each section holds a different list of links. */
-nav .container section {
+/* Each section is as wide as the viewport. */
+/* 100vw = 100% of the viewport width. */
+nav .nav-div section {
+
     padding: calc(1em + 2px);
     width: 100vw;
-}
-/* Modify links in the sections. */
-nav .container section a {
 
+}
+
+/* Modify links in navbar sections to have specific fonts. */
+nav a {
+
+    font-family: Inter, 'Times New Roman', Times, serif;
+    text-decoration: none;
     border: solid 1px transparent;
     padding: 1em;
+    padding-left: 0px;
     color: rgb(0, 110, 255);
 
 }
 /* Remove border around link clicks */
-nav .container section a:active, nav .container section a:focus{
+nav .nav-div section a:active, nav .nav-div section a:focus{
 
     outline: 0;
 
 }
 /* Change links when hovering over them */
-nav .container section a:hover{
+nav .nav-div section a:hover{
 
     text-decoration: underline;
 
 }
 /* Remove visited link discoloration */
-nav .container section a:visited{
+nav .nav-div section a:visited{
 
     color: rgb(0, 110, 255);
 
 }
 
-/* Navbar Logo Font & Color and Link Font & Color */
-
-nav a {
-
-    font-family: Inter, 'Times New Roman', Times, serif;
-    text-decoration: none;
-
-}
-
+/* Logo text with custom font and multiple colors. */
 nav a#logo {
 
     font-family: Changa, 'Times New Roman', Times, serif;
     font-size: x-large;
 
 }
-
+/* Logo text has an animated gradient for its first half. */
 nav a#logo logo1{
 
-    color: rgb(0, 140, 255);
+    background: linear-gradient(to right, rgb(20, 149, 255) 25%, rgb(0, 38, 255) 50%, rgb(20, 140, 255) 75%);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    animation: shine 7s linear infinite;
+
+}
+@keyframes shine {
+
+    0% {
+      background-position: 200% center;
+    }
+
+}
+nav a#logo logo2{
+
+    color: rgb(0, 38, 255);
 
 }
 
-nav a#logo logo2{
+/* Fonts used in the Navbar can be used throughout the page. */
+@font-face {
+    font-family: 'Changa';
+    src: url('../fonts/Changa-Medium.ttf') format("truetype");
 
-    color: rgb(0, 81, 255);
-
+}
+@font-face {
+    font-family: 'Inter';
+    src: url('../fonts/Inter-Variable.ttf') format("truetype");
 }

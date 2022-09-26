@@ -7,6 +7,48 @@ html, body{
 
 }
 
+/* Create a CSS Grid object through a div with the class "maingrid" */
+/* This div will serve as the main "grid" for the page. */
+div.maingrid {
+
+    display: grid;
+    width: 100vw;
+    height: 90vh;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "introduction introduction introduction introduction"
+    "portfolio assignment schedule schedule"
+    "portfolio assignment schedule schedule"
+
+}
+
+/* Any child of div.maingrid should be a grid object. */
+div.maingrid #introduction {
+
+    grid-area: introduction;
+    background-color: blueviolet;
+
+}
+div.maingrid #assignment {
+
+    grid-area: assignment;
+    background-color: aqua;
+
+}
+div.maingrid #portfolio {
+
+    grid-area: portfolio;
+    background-color: brown;
+
+}
+div.maingrid #schedule {
+
+    grid-area: schedule;
+    background-color: orangered;
+
+}
+
 table.schedule { 
     width: 100%;
     table-layout: fixed; 
@@ -38,22 +80,4 @@ ul.navlist li {
 h1 {
     color: navy;
     margin-left: 20px;
-}
-
-a {
-
-
-
-}
-
-/* Fonts */
-
-@font-face {
-    font-family: 'Changa';
-    src: url('../fonts/Changa-Medium.ttf') format("truetype");
-
-}
-@font-face {
-    font-family: 'Inter';
-    src: url('../fonts/Inter-Variable.ttf') format("truetype");
 }
