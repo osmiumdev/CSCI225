@@ -1,9 +1,13 @@
 /* Remove default margin and padding for body. */
 /* This removes whitespace at the edges of the navbar. */
-html, body{
+body{
 
     margin: 0px;
     padding: 0px;
+    background-color: var(--background);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
 
 }
 
@@ -12,14 +16,16 @@ html, body{
 div.maingrid {
 
     display: grid;
-    width: 100vw;
-    height: 90vh;
+    margin-top: 5px;
+    width: calc(100vw - 17px); /* 100% viewport width - 17px for scrollbar*/
+    height: 100vh;
     grid-template-columns: auto;
     grid-template-rows: auto;
     grid-template-areas: 
     "introduction introduction introduction introduction"
     "portfolio assignment schedule schedule"
     "portfolio assignment schedule schedule"
+    "footer footer footer footer"
 
 }
 
@@ -27,7 +33,8 @@ div.maingrid {
 div.maingrid #introduction {
 
     grid-area: introduction;
-    background-color: blueviolet;
+    background-color: black;
+    color: white;
 
 }
 div.maingrid #assignment {
@@ -49,35 +56,17 @@ div.maingrid #schedule {
 
 }
 
-table.schedule { 
-    width: 100%;
-    table-layout: fixed; 
+div.maingrid #footer {
 
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-
-table.schedule th {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-
-table.schedule td {
-    width: 25%;
-    height: 25%;
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-
-ul.navlist li {
-
-    display:inline-block;
-    padding-inline: 5px;
-    text-align: center;
+    grid-area: footer;
+    background-color: gray;
 
 }
 
-h1 {
-    color: navy;
-    margin-left: 20px;
+div.rounded {
+
+    border-radius: 17px;
+    margin: 10px;
+    padding: 15px; 
+
 }

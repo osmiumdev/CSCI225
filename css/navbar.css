@@ -1,98 +1,147 @@
-/* Navbar object sticks to top of page, and holds links. */
-/* All CSS in here is only for navbar modification. */
+/* Variables */
+:root {
 
-/* Navbar object specified background color, disables */
-/* div scrolling, and sticks to top of the page. */
-nav {
-
-    /* Background of navbar is a gradient, from off-white to pure transparency, conversion starting halfway through.*/
-    background-image: linear-gradient(to right, rgba(238, 238, 238, 1), rgba(238, 238, 238, 1), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
-    position: fixed;
-    overflow: hidden;
-    scroll-behavior: smooth;
-
+    --logo1: #4CC9F0;
+    --logo2: #4361EE;
+    --navback: #001233;
+    --background: #00043A;
+    --navbutton: #001247;
+    --navtext: #eee;
+    --pulse1: sweep 7s linear infinite;
 }
 
-/* The div for the navbar holds all "section" objects */
-/* We specify the height of the divs to be a size relative */
-/* to the current font. (1em = 1x current font size) */
-/* Line height is specified to fix bug on first page load. */
-nav .nav-div {
+/* Main navbar div */
+.navbar {
 
-    height: calc(3em + 4px);
-    line-height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    column-gap: 20px;
 
-}
+    position: relative;
+    z-index: 2;
 
-/* Each section holds a different list of links. */
-/* Each section is as wide as the viewport. */
-/* 100vw = 100% of the viewport width. */
-nav .nav-div section {
-
-    padding: calc(1em + 2px);
     width: 100vw;
+    padding-left: 20px;
 
-}
-
-/* Modify links in navbar sections to have specific fonts. */
-nav a {
-
-    font-family: Inter, 'Times New Roman', Times, serif;
-    text-decoration: none;
-    border: solid 1px transparent;
-    padding: 1em;
-    padding-left: 0px;
-    color: rgb(0, 110, 255);
-
-}
-/* Remove border around link clicks */
-nav .nav-div section a:active, nav .nav-div section a:focus{
-
-    outline: 0;
-
-}
-/* Change links when hovering over them */
-nav .nav-div section a:hover{
-
-    text-decoration: underline;
-
-}
-/* Remove visited link discoloration */
-nav .nav-div section a:visited{
-
-    color: rgb(0, 110, 255);
+    background-color: var(--navback);
 
 }
 
 /* Logo text with custom font and multiple colors. */
-nav a#logo {
+.navbar a#logo {
 
     font-family: Changa, 'Times New Roman', Times, serif;
-    font-size: x-large;
+    font-size: xx-large;
+    text-decoration: none;
 
 }
-/* Logo text has an animated gradient for its first half. */
-nav a#logo logo1{
 
-    background: linear-gradient(to right, rgb(20, 149, 255) 25%, rgb(0, 38, 255) 50%, rgb(20, 140, 255) 75%);
+/* Logo text has an animated gradient for its first half. */
+.navbar a#logo logo1{
+
+    background: linear-gradient(45deg, var(--logo1) 25%, var(--logo2) 50%, var(--logo1) 75%);
     background-size: 200% auto;
+
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: var(--pulse1);
+
+}
+
+.navbar a#logo logo2{
+
+    color: var(--logo2);
+
+}
+
+/* Glowing divider line placed underneath navbar. */
+.navbar#divider {
+
+    display: flex;
+    align-items: center;
+    margin-top: -8px;
+    height: 12px;
+    width: 100vw;
+
+    position: absolute;
+    z-index: 1;
+
+    content: "";
+    flex: 1;
+
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    background: linear-gradient(to right, var(--logo1), var(--logo2), var(--logo2), var(--logo1));
+    background-size: 200% auto;
+    animation: var(--pulse1);
+
+}
+
+/* Navbar buttons */
+.navbar .glow-on-hover {
+    font-family: Inter;
+    width: 150px;
+    height: 40px;
+    border: none;
+    outline: none;
+    color: var(--navtext);
+    background: var(--navbutton);
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.navbar .glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, var(--logo1) 0%, var(--logo2) 25%, var(--logo2) 50%, var(--logo1) 75%);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 200%;
     
-    animation: shine 7s linear infinite;
-
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: var(--pulse1);
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
 }
-@keyframes shine {
 
-    0% {
-      background-position: 200% center;
+.navbar .glow-on-hover:active {
+    color: #000
+}
+
+.navbar .glow-on-hover:active:after {
+    background: transparent;
+}
+
+.navbar .glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.navbar .glow-on-hover:after {
+    background: var(--navbutton);
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+/* Keyframe object for sweeping animation */
+@keyframes sweep {
+
+    from {
+        background-position: 200% center;
     }
-
-}
-nav a#logo logo2{
-
-    color: rgb(0, 38, 255);
 
 }
 
