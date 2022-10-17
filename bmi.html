@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+
+    <body>
+
+        <bmi>
+
+            <div>
+
+                <label for="weight">Weight (lbs)</label>
+                <input type="text" id="weight"><br>
+                <label for="inches">Height (Inches)</label>
+                <input type="text" id="inches">
+                <label for="feet">Height (Feet)</label>
+                <input type="text" id="feet"><br>
+
+                <label for="age">Age:</label>
+                <select id="age">
+                    <option>Age</option>
+                </select>
+
+
+                <input id = "submit" type="submit" value="Submit">
+
+                <script>
+
+                    function calcBMI(){
+
+                        var weight = document.getElementById("weight").value;
+                        var heightFeet = document.getElementById("feet").value;
+                        var heightInches = document.getElementById("inches").value;
+
+                        heightInches = (parseInt(heightInches) + (parseInt(heightFeet) * 12));
+                    }
+
+                    var button = document.getElementById("submit");
+                    button.addEventListener("click", calcBMI, false);
+
+                    var select = document.getElementById("age");
+
+                    for(var i = 0; i < 99; i++) {
+
+                        var opt = document.createElement("option");
+                        opt.textContent = i;
+                        opt.value = i;
+                        select.appendChild(opt);
+
+                    }
+
+                </script>
+
+            </div>
+
+        </bmi>
+
+    </body>
+
+</html>
+
