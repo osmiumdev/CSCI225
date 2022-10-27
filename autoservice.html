@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>CSCI225 Auto Service Assistant Tool</title>
+        <link rel="stylesheet" href="css/frame.css">
+        <link rel="stylesheet" href="css/autoservice.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+
+        <frames id="header">
+            <div>
+              <a id="logo" href="https://www.github.com/OsmiumDev"><logo1>Osmium</logo1><logo2>Dev</logo2></a>
+              <button class="glow-on-hover" type="button" onclick="location.href='index.html'">Assignments</button>
+              <button class="glow-on-hover" type="button" onclick="location.href='index.html'">Portfolio</button>
+              <button class="glow-on-hover" type="button" onclick="location.href='index.html'">Schedule</button>
+              <button class="glow-on-hover" type="button" onclick="location.href='https\:\/\/www.youtube.com/watch?v=dQw4w9WgXcQ'">Extras</button>
+            </div>
+            <span id="divider"></span>
+          </frames>
+
+        <autoservice>
+
+            <div class="maingrid">
+
+                <div class="rounded" id="challenge">
+
+                    <div class="rounded-inner" id="indicator">
+
+                        <h1> Auto Service Assistant Tool </h1> 
+                        <p> <u>Instructions:</u></p>
+                        <p> Choose an answer provided from each of a series of questions <br>
+                             to receive a helpful pointer to what your car issue may be.</p>
+                        <p> <br> Copyright 2016 by Morris Rosenthal All Rights Reserved  ---SOURCE: https://www.ifitjams.com/starting.htm</p>
+
+                    </div>
+
+                    <div class="rounded-inner" id="prompt">
+
+                        <h1 id="question-header"> Question 1: </h1>
+                        <br>
+                        <br>
+                        <p style="text-align: center;" id="question">Does the starter crank?</p>
+                        <br>
+                        <p style="text-align: center;" id="answer">
+                            <input type="button" value="Yes" onclick="button1()">
+                            <input type="button" value="No" onclick="button2()">
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="rounded" id="response">
+
+                    <p id="message"></p>
+                    <img src="" id="image" style="width: 300px;">
+
+                </div>
+
+            </div>
+
+        </autoservice>
+
+        <frames id="footer">
+            <span id="divider"></span>
+            <div>
+              <p>Copyright 2022 | OsmiumDev </p>
+            </div>
+          </frames>
+
+    </body>
+
+    <script src="js/autoservice/autoservice.js"></script>
+
+</html>
+
