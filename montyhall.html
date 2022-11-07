@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>CSCI225 Monty Hall Problem</title>
+        <link rel="stylesheet" href="css/frame.css">
+        <link rel="stylesheet" href="css/montyhall.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+
+        <frames id="header">
+            <div>
+              <a id="logo" href="https://www.github.com/OsmiumDev"><logo1>Osmium</logo1><logo2>Dev</logo2></a>
+              <button class="glow-on-hover" type="button" onclick="location.href='index.html'">Assignments</button>
+              <button class="glow-on-hover" type="button" onclick="location.href='index.html'">Portfolio</button>
+              <button class="glow-on-hover" type="button" onclick="location.href='index.html'">Schedule</button>
+              <button class="glow-on-hover" type="button" onclick="location.href='https\:\/\/www.youtube.com/watch?v=dQw4w9WgXcQ'">Extras</button>
+            </div>
+            <span id="divider"></span>
+          </frames>
+
+        <montyhall>
+
+            <div class="maingrid">
+
+                <div class="rounded" id="interface">
+
+                    <div class="rounded-inner" id="indicator">
+
+                        <h1> Monty Hall Problem Simulator </h1> 
+                        <p> Thank you for playing the Monty Hall Problem Simulator Game!</p>
+                        <br>
+                        <p> <u>Instructions:</u></p>
+                        <p> You are presented with three doors, two have goats behind them, and one has a shiny new car!
+                            When prompted in the lower panel, you may choose which one of three closed doors to "lock-in."
+                            After locking in a door, the host will reveal one of the goat doors!
+                            Finally, you will be given one last opportunity to either keep your original choice,
+                            or to switch to the other, unopened door!
+                            After making your decision, all doors will be opened, and the results will be recorded.
+                        </p>
+
+                    </div>
+
+                    <div class="rounded-inner" id="prompt">
+
+                        <h1 id="question-header"> Prompt: </h1>
+
+                    </div>
+
+                </div>
+
+                <div class="rounded" id="stage">
+
+                    <p id="message">Uh oh! Stinky!</p>
+                    <img src="img/cutedog.jpg" id="image" style="width: 300px;">
+
+                </div>
+
+            </div>
+
+        </montyhall>
+
+        <frames id="footer">
+            <span id="divider"></span>
+            <div>
+              <p>Copyright 2022 | OsmiumDev </p>
+            </div>
+          </frames>
+
+    </body>
+
+    <script src="js/montyhall/game.js"></script>
+
+</html>
+
