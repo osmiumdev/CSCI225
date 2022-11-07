@@ -91,7 +91,7 @@ div.rounded {
 
 }
 
-div.maingrid #challenge{
+div.maingrid #interface{
 
     padding: 25px;
     display: flex;
@@ -99,7 +99,7 @@ div.maingrid #challenge{
 
 }
 
-div.maingrid #response{
+div.maingrid #stage{
 
     display: flex;
     flex-direction: column;
