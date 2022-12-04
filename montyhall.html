@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="css/frame.css">
         <link rel="stylesheet" href="css/montyhall.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
     </head>
 
     <body>
@@ -34,7 +35,7 @@
                         <br>
                         <p> <u>Instructions:</u></p>
                         <p> You are presented with three doors, two have goats behind them, and one has a shiny new car!
-                            When prompted in the lower panel, you may choose which one of three closed doors to "lock-in."
+                            When prompted, you may choose which one of three closed doors to "lock-in."
                             After locking in a door, the host will reveal one of the goat doors!
                             Finally, you will be given one last opportunity to either keep your original choice,
                             or to switch to the other, unopened door!
@@ -45,16 +46,68 @@
 
                     <div class="rounded-inner" id="prompt">
 
-                        <h1 id="question-header"> Prompt: </h1>
+                        <div class="rounded-inner" id="controls">
+
+                            <h1> Auto Controls </h1>
+                            
+                            <p style="text-align: center;" id="answer">
+                                <input type="button" value="Toggle Automation" onclick="autoRunToggle()">
+                                <input type="number" min="1" max="3000" value="1500" id="spinner"> Speed
+                            </p>
+
+
+                        </div>
+
+                        <div class="rounded-inner" id="stats">
+
+                            <h1 id="question-header"> Stats </h1>
+
+                            <table id="stattable">
+
+                                <tr>
+                                    <th>-</th>
+                                    <th>Switches</th>
+                                    <th>Stays</th>
+                                </tr>
+                                <tr>
+                                    <td>Wins</td>
+                                    <td id="t0">0</td>
+                                    <td id="t1">0</td>
+                                </tr>
+                                <tr>
+                                    <td>Loss</td>
+                                    <td id="t2">0</td>
+                                    <td id="t3">0</td>
+                                </tr>
+
+                            </table>
+
+                            <p>Switch W/L: <p id="switchwl"></p></p>
+                            <p>Stay W/L: <p id="staywl"></p></p>
+
+                        </div>
 
                     </div>
 
                 </div>
 
-                <div class="rounded" id="stage">
+                <div class="rounded" id="display">
 
-                    <p id="message">Uh oh! Stinky!</p>
-                    <img src="img/cutedog.jpg" id="image" style="width: 300px;">
+                    <div class="rounded" id="message">
+
+                        <h1 id="hosttext"> Loading... </h1>
+
+                    </div>
+
+                    <div class="rounded" id="stage">
+
+                        <img src="img/montyhall/door_closed.png" id="door1" class="door" style="width: 150px;">
+                        <img src="img/montyhall/door_closed.png" id="door2" class="door" style="width: 150px;">
+                        <img src="img/montyhall/door_closed.png" id="door3" class="door" style="width: 150px;">
+
+                    </div>
+
+ 
 
                 </div>
 
@@ -71,7 +124,7 @@
 
     </body>
 
-    <script src="js/montyhall/game.js"></script>
+    <script src="js/montyhall/montyhall.js"></script>
 
 </html>
 
