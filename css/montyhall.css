@@ -70,7 +70,6 @@ div.maingrid div{
 
 }
 
-/* Assignment 3*/
 div.maingrid p{
 
     font-family: Inter;
@@ -99,12 +98,32 @@ div.maingrid #interface{
 
 }
 
-div.maingrid #stage{
+div.maingrid #prompt{
+
+    padding: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+
+}
+
+div.maingrid #display{
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 25px;
+
+}
+
+div.maingrid #stage{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
 
 }
 
@@ -113,8 +132,7 @@ div.rounded-inner {
     flex: 1;
     border-radius: 20px;
     margin: 5px;
-    padding: 17px; 
-    height: 0;
+    padding: 15px; 
     box-shadow: 
     inset 0 0 5px var(--griddivglow1),
     0 0 10px var(--griddivglow2);
