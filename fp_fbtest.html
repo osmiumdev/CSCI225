@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js"></script>
+  </head>
+  <body>
+    <div class="message">
+      <h1>Firebase Test</h1>
+      <ul id="eventList"></ul>
+
+      <br />
+
+      <button onclick="retrieveAllEvents(printEvents)">Load All Events</button>
+      <button onclick="addEvent(testEvent)">Create Test Event</button>
+      <input type="text" id="eventId" />
+      <button onclick="retrieveAllEvents(selectEvent)">Select Event</button>
+      <button onclick="deleteEvent(selectedEvent)">Delete Test Event</button>
+      <!-- <button onclick="myFunction()">Update Test Event</button> -->
+      <button onclick="retrieveAllEvents(deleteAllEvents)">
+        Delete All Events
+      </button>
+
+      <br />
+      <br />
+
+      <span id="selectedEvent">null</span>
+
+      <br />
+      <br />
+
+      <input type="text" id="username" /><input type="text" id="password" />
+      <br />
+      <button onclick="createUser(
+        document.getElementById('username').value, document.getElementById('password').value, loginCallback
+      )">Create User</button>
+      <button onclick="signinUser(
+        document.getElementById('username').value, document.getElementById('password').value, loginCallback
+      )">Login User</button>
+      <button onclick="logoutUser(loginCallback)">Logout User</button>
+
+      <br />
+
+      <span id="signedInUser">null</span>
+    </div>
+    <script src="js/data.js"></script>
+    <script>
+      initializeDatabase();
+    </script>
+  </body>
+</html>
