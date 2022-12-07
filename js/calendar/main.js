@@ -200,9 +200,9 @@ var Calendar = function(model, options, date){
         var number = DayNumber(i+1);
         // Check Date against Event Dates
         for(var n = 0; n < calendar.Model.length; n++){
-          var evDate = calendar.Model[n].Date;
+          var evDate = calendar.Model[n].sDate;
           var toDate = new Date(calendar.Selected.Year, calendar.Selected.Month, (i+1));
-          if(evDate.getTime() == toDate.getTime()){
+          if(evDate.getDate() == toDate.getDate()&&evDate.getMonth()==toDate.getMonth()&&evDate.getFullYear()==toDate.getFullYear()){
             number.className += " eventday";
             var name = document.createElement('span');
             name.className += "cld-name";
@@ -213,7 +213,8 @@ var Calendar = function(model, options, date){
               
 
             }else{
-              name.innerHTML += '<a href="'+'void(null)"'+' onmouseover="'+'showPos(event, \'test.\');">' + calendar.Model[n].name + '</a>';
+              
+              name.innerHTML += '<a href="'+'void(null)"'+' onmouseover="'+'showPos(event, \'test\');">' + calendar.Model[n].name + '</a>';
             }
             number.appendChild(name);
           }
@@ -271,6 +272,9 @@ var Calendar = function(model, options, date){
     var obj = new Calendar(data, settings);
     createCalendar(obj, el);
   }
+
+
+
   function showPos(event, text) {
     var el, x, y;
     
