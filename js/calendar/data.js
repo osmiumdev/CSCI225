@@ -267,7 +267,7 @@ function selectEvent(events, event) {
     for (var i = 0; i < events.length; i++) {
       console.log("EventList " + i + ": " + events[i].doc);
       console.log("Passed Doc ID: " + event)
-      if (events[i].doc.trim() == event.trim()) {
+      if (events[i].doc == event) {
         console.log("Found Event with ID: " + eventId);
         selectedEvent = events[i];
         span.innerHTML = "Selected Event Info: "+
@@ -325,6 +325,18 @@ function deleteAllEvents(events) {
   for (var i = 0; i < events.length; i++) {
     deleteEvent(events[i]);
   }
+}
+
+function deleteSelectedEvent(){
+
+  var eventId = document.getElementById('eventId').value;
+  if(eventId != null){
+
+    deleteEvent(new eventObject(eventId));
+
+  }
+  retrieveAllEvents(drawCalendar, null);
+
 }
 
 function drawCalendar(events){

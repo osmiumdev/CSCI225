@@ -216,12 +216,9 @@ function createCalendar(calendar, element, adjuster) {
 
 
           } else {
-            console.log(calendar.Model[n].doc);
             var doc = calendar.Model[n].doc;
-            console.log(doc);
-            console.log(typeof doc);
-            name.innerHTML += '<a href="' + '#"' + '>' + calendar.Model[n].name + '</a>';
-            name.addEventListener("click", function() { selectEvent(null, doc); })
+            name.innerHTML += '<a href="' + '#"' + 'onclick=" selectEvent(null, \'' + doc.toString() + '\');"' +'>' + calendar.Model[n].name + '</a>';
+            //name.addEventListener("click", function() { selectEvent(null, doc.toString()); })
           }
           number.appendChild(name);
         }
