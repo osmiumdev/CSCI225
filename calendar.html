@@ -16,6 +16,8 @@
   <body>
     <div class="message">
       <h1>Event Viewer and Login</h1>
+      <span> Note to Yilian: Try clicking events in the calendar below! Try adding your own events! </span>
+      <span> Deleting works by copying 'ID' into the first box below, then clicking "Delete Event" </span>
       <ul id="eventList"></ul>
 
       <br />
@@ -24,7 +26,7 @@
       <button class= "newEvent" onclick="openForm()">Create New Event</button>
       <input type="text" id="eventId" />
       <button onclick="retrieveAllEvents(selectEvent)">Event Details</button>
-      <button onclick="deleteEvent(selectedEvent)">Delete Test Event</button>
+      <button onclick="deleteSelectedEvent()">Delete Test Event</button>
       <!-- <button onclick="myFunction()">Update Test Event</button> -->
       <button onclick="retrieveAllEvents(deleteAllEvents)">
         Delete All Events
