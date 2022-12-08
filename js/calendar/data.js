@@ -17,6 +17,7 @@ const firebaseConfig = {
 };
 
 var db = null;
+var user = null;
 
 function initializeDatabase() {
   //This function is called after the page is fully loaded,
@@ -25,7 +26,7 @@ function initializeDatabase() {
   db = firebase.firestore();
 }
 
-function retrieveAllEvents(callback) {
+function retrieveAllEvents(callback, data) {
   //Passes an array of eventObjects to the callback function.
 
   var returnable = [];
@@ -43,13 +44,19 @@ function retrieveAllEvents(callback) {
         returnable.push(eventConverter.fromFirestoreBasic(eventObject));
       }
 
-      callback(returnable);
+      callback(returnable, data);
     });
 }
 
 function addEvent(event) {
   //Adds an eventObject to the firestore.
   db.collection('events').doc().withConverter(eventConverter).set(event);
+}
+
+function addEventCallback(event,callback) {
+  //Adds an eventObject to the firestore.
+  db.collection('events').doc().withConverter(eventConverter).set(event);
+  callback();
 }
 
 function deleteEvent(eventObject) {
@@ -109,37 +116,14 @@ function fromFirestoreToCommentArray(comments) {
   return returnable;
 }
 
-function dateToFirestore(date) {
-  //Utilizes built-in Date object
-  return {
-    month: date.getDate(),
-    day: date.getDay(),
-    year: date.getFullYear(),
-    hour: date.getHours(),
-    minute: date.getMinutes(),
-    second: date.getSeconds(),
-  };
-}
-
-function firestoreToDate(date) {
-  return new Date(
-    date.year,
-    date.month,
-    date.day,
-    date.hour,
-    date.minute,
-    date.second
-  );
-}
-
 const eventConverter = {
   //Object for FireStore which converts an Event object into compatible FireStore document, and vice versa.
   toFirestore: function (event) {
     return {
       doc: event.doc,
       name: event.name,
-      sDate: dateToFirestore(event.sDate),
-      eDate: dateToFirestore(event.eDate),
+      sDate: event.sDate.toString(),
+      eDate: event.eDate.toString(),
       color: event.color,
       desc: event.desc,
       owner: event.owner,
@@ -153,8 +137,8 @@ const eventConverter = {
     return new eventObject(
       data.doc,
       data.name,
-      firestoreToDate(data.sDate),
-      firestoreToDate(data.eDate),
+      new Date(data.sDate),
+      new Date(data.eDate),
       data.color,
       data.desc,
       data.owner,
@@ -167,8 +151,8 @@ const eventConverter = {
     return new eventObject(
       data.doc,
       data.name,
-      firestoreToDate(data.sDate),
-      firestoreToDate(data.eDate),
+      new Date(data.sDate),
+      new Date(data.eDate),
       data.color,
       data.desc,
       data.owner,
@@ -270,23 +254,71 @@ function printEvents(events) {
   }
 }
 
-function selectEvent(events) {
+function selectEvent(events, event) {
+  //Testing function for printing event information to screen.
   var span = document.getElementById('selectedEvent');
   var eventId = document.getElementById('eventId').value;
+  if(events == null){
+    console.log("Events Null, initiating callback!");
+    retrieveAllEvents(selectEvent, event)
 
-  for (var i = 0; i < events.length; i++) {
-    if (events[i].doc == eventId) {
-      selectedEvent = events[i];
-      span.innerHTML = events[i].doc;
-      console.log('Event Selected: ' + eventId);
-      console.log(events[i]);
-      return;
+  } else if(event != null){
+    console.log("Events Found, searching...");
+    for (var i = 0; i < events.length; i++) {
+      console.log("EventList " + i + ": " + events[i].doc);
+      console.log("Passed Doc ID: " + event)
+      if (events[i].doc.trim() == event.trim()) {
+        console.log("Found Event with ID: " + eventId);
+        selectedEvent = events[i];
+        span.innerHTML = "Selected Event Info: "+
+        "<br />ID:"+events[i].doc+
+        "<br />Name:"+events[i].name+
+        "<br />Start Date:"+events[i].sDate+
+        "<br />End Date:"+events[i].eDate+
+        "<br />Color Selected:"+events[i].color+
+        "<br />Description:"+events[i].desc+
+        "<br />Creator of Event:"+events[i].owner+
+        "<br />RSVPs:"+events[i].rsvps;
+        //creation of event details screen piggybacked on select event
+        console.log('Event Selected: ' + eventId);
+        console.log(events[i]);
+        return;
+      }
     }
+  
+    selectedEvent = null;
+    span.innerHTML = 'Selected Event Info: null';
+    console.log('No Event Found');
+
+  } else {
+
+    console.log("Events Found, searching...");
+    for (var i = 0; i < events.length; i++) {
+      if (events[i].doc.trim() == eventId.trim()) {
+        console.log("Found Event with ID: " + eventId);
+        selectedEvent = events[i];
+        span.innerHTML = "Selected Event Info: "+
+        "<br />ID:"+events[i].doc+
+        "<br />Name:"+events[i].name+
+        "<br />Start Date:"+events[i].sDate+
+        "<br />End Date:"+events[i].eDate+
+        "<br />Color Selected:"+events[i].color+
+        "<br />Description:"+events[i].desc+
+        "<br />Creator of Event:"+events[i].owner+
+        "<br />RSVPs:"+events[i].rsvps;
+        //creation of event details screen piggybacked on select event
+        console.log('Event Selected: ' + eventId);
+        console.log(events[i]);
+        return;
+      }
+    }
+  
+    selectedEvent = null;
+    span.innerHTML = 'Selected Event Info: null';
+    console.log('No Event Found');
+
   }
 
-  selectedEvent = null;
-  span.innerHTML = 'null';
-  console.log('No Event Found');
 }
 
 function deleteAllEvents(events) {
@@ -296,10 +328,11 @@ function deleteAllEvents(events) {
 }
 
 function drawCalendar(events){
-console.log(events);
+  console.log(events);
+  document.getElementById('caleandar').innerHTML = "";
   caleandar(document.getElementById('caleandar'), events, {});
 
 }
 
 initializeDatabase();
-retrieveAllEvents(drawCalendar);
+retrieveAllEvents(drawCalendar, null);
