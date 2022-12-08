@@ -3,6 +3,7 @@
 
   <head>
     <title>Event calander</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
     <link rel="stylesheet" href="css/calender/calender.css"/>
     <link rel="stylesheet" href="css/calender/theme.css"/>
@@ -13,15 +14,91 @@
 
   </head>
   <body>
+    <div class="message">
+      <h1>Event Viewer and Login</h1>
+      <ul id="eventList"></ul>
+
+      <br />
+
+      <button onclick="retrieveAllEvents(printEvents)">Load All Events</button>
+      <button class= "newEvent" onclick="openForm()">Create New Event</button>
+      <input type="text" id="eventId" />
+      <button onclick="retrieveAllEvents(selectEvent)">Event Details</button>
+      <button onclick="deleteEvent(selectedEvent)">Delete Test Event</button>
+      <!-- <button onclick="myFunction()">Update Test Event</button> -->
+      <button onclick="retrieveAllEvents(deleteAllEvents)">
+        Delete All Events
+      </button>
+
+      <br />
+      <br />
+
+      <span id="selectedEvent">Selected Event Info: null</span>
+
+      <br />
+      <br />
+
+      <input type="text" id="username" /><input type="text" id="password" />
+      <br />
+      <button onclick="createUser(
+        document.getElementById('username').value, document.getElementById('password').value, loginCallback
+      )">Create User</button>
+      <button onclick="signinUser(
+        document.getElementById('username').value, document.getElementById('password').value, loginCallback
+      )">Login User</button>
+      <button onclick="logoutUser(loginCallback)">Logout User</button>
+
+      <br />
+
+      <span id="signedInUser">Logged-In User: null</span>
+    </div>
+    <div class="ev-popup" id="EvForm" style="display: none;">
+      
+        <h1>Event Creator</h1>
     
+        <label for="name"><b>Name</b></label>
+        <input type="text" placeholder="Enter Event Name" id="name" required>
+    
+        <label for="sDate"><b>Start Date</b></label>
+        <input type="datetime-local"  id="sDate" required>
+
+        <label for="eDate"><b>End Date</b></label>
+        <input type="datetime-local"  id="eDate" required>
+
+        <label for="color"><b>Color</b></label>
+        <input type="color"  id="color" required>
+
+        <label for="desc"><b>Description</b></label>
+        <input type="text" placeholder="Enter Event Description" id="desc" required>
+
+        <label for="owner"><b>Owner</b></label>
+        <input type="text" placeholder="Enter Owner username" id="owner" required>
+    
+        <button onclick="onbtnclick();closeForm()">Create</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+      
+    </div>
+    <script>function openForm() {
+      if (user=null) {
+        console.log("null");
+        // will always return null even when logged in it is currently set to =
+        //so that the create box will show if set to == always fails
+      } else {
+        document.getElementById("EvForm").style.display = "block";
+        console.log(user);
+      }
+      
+    }
+    
+    function closeForm() {
+      document.getElementById("EvForm").style.display = "none";
+    }</script>
     <div id="caleandar">
 
     </div>
-    <div id='PopUp' style='display: none; position: absolute; left: 100px; top: 50px; border: solid black 1px; padding: 10px; background-color: rgb(200,100,100); text-align: justify; font-size: 12px; width: 135px;' onmouseover="document.getElementById('PopUp').style.display = 'none' ">
-      <span id='PopUpText'>TEXT</span>
-    </div>
-
-    <script type="text/javascript" src="js/calendar/main.js"></script>
+   
     <script type="text/javascript" src="js/calendar/data.js"></script>
+    <script type="text/javascript" src="js/calendar/main.js"></script>
+    
   </body>
 </html>
